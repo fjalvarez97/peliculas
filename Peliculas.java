@@ -13,14 +13,17 @@ public class Peliculas
     private String title;
     //Indica el nombre del director de la pelicula
     private String director;
+    //Indica el genero de la pelicula
+    private String gender;
     /**
      * Constructor for objects of class Peliculas
      */
-    public Peliculas(int year, String title, String director)
+    public Peliculas(int year, String title, String director, String gender)
     {
         this.year = year;
         this.title = title;
         this.director = director;
+        this.gender = gender;
     }
 
     /**
@@ -72,5 +75,22 @@ public class Peliculas
     public String getDirector()
     {
         return director;
+    }
+    
+    /**
+     * Metodo setter del campo gender para
+     * indicar el genero de la pelicula.
+     */
+    public void setGender(String gender)
+    {
+        this.gender = gender;
+    }
+    
+    /**
+     * Metodo getter del campo gender.
+     */
+    public String getGender()
+    {
+        return gender;
     }
 }
