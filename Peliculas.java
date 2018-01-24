@@ -121,7 +121,7 @@ public class Peliculas
     public String getInfo()
     {
         String info = "";
-        info ="Identificador: " + identificator +  "Titulo: " + title + " Director " + director + " Genero: " + gender +  "Anio de salida: " + year;
+        info ="Identificador: " + identificator +  " Titulo: " + title + " Director " + director + " Genero: " + gender +  " Anio de salida: " + year;
         return info;
     }
 }

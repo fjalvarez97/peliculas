@@ -28,4 +28,14 @@ public class TiendaPeliculas
         Peliculas nuevaPelicula = new Peliculas(year,title,director,gender,identificator);
         listaDePeliculas.add(nuevaPelicula);
     }
+    
+    public void infoColection()
+    {
+        int index = 0;
+        while(listaDePeliculas.size() > index)
+        {
+            System.out.println(listaDePeliculas.get(index).getInfo());
+            index++;
+        }
+    }
 }
