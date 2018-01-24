@@ -15,15 +15,18 @@ public class Peliculas
     private String director;
     //Indica el genero de la pelicula
     private String gender;
+    //Numero que identifica a la pelicula
+    private int identificator;
     /**
      * Constructor for objects of class Peliculas
      */
-    public Peliculas(int year, String title, String director, String gender)
+    public Peliculas(int year, String title, String director, String gender, int identificator)
     {
         this.year = year;
         this.title = title;
         this.director = director;
         this.gender = gender;
+        this.identificator = identificator;
     }
 
     /**
@@ -95,13 +98,30 @@ public class Peliculas
     }
     
     /**
+     * Metodo setter del campo identificator para
+     * indicar el numero que identifica a la pelicula.
+     */
+    public void setIdentificator(int identificator)
+    {
+        this.identificator = identificator;
+    }
+    
+    /**
+     * Metodo getter del campo identificator.
+     */
+    public int getIdentificator()
+    {
+        return identificator;
+    }
+    
+    /**
      * Metodo para obterner toda la informacion
      * de la pelicula.
      */
     public String getInfo()
     {
         String info = "";
-        info = "Titulo: " + title + " Director " + director + " Genero: " + gender +  "Anio de salida: " + year;
+        info ="Identificador: " + identificator +  "Titulo: " + title + " Director " + director + " Genero: " + gender +  "Anio de salida: " + year;
         return info;
     }
 }
