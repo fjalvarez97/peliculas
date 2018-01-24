@@ -93,4 +93,15 @@ public class Peliculas
     {
         return gender;
     }
+    
+    /**
+     * Metodo para obterner toda la informacion
+     * de la pelicula.
+     */
+    public String getInfo()
+    {
+        String info = "";
+        info = "Titulo: " + title + " Director " + director + " Genero: " + gender +  "Anio de salida: " + year;
+        return info;
+    }
 }
