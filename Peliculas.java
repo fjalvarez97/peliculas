@@ -20,7 +20,7 @@ public class Peliculas
     /**
      * Constructor for objects of class Peliculas
      */
-    public Peliculas(int year, String title, String director, String gender, int identificator)
+    public Peliculas(int year, String title, String director, String gender,int identificator)
     {
         this.year = year;
         this.title = title;
@@ -99,7 +99,7 @@ public class Peliculas
     
     /**
      * Metodo setter del campo identificator para
-     * indicar el numero que identifica a la pelicula.
+     * indicar el identificador de la pelicula.
      */
     public void setIdentificator(int identificator)
     {
@@ -124,4 +124,5 @@ public class Peliculas
         info ="Identificador: " + identificator +  " Titulo: " + title + " Director " + director + " Genero: " + gender +  " Anio de salida: " + year;
         return info;
     }
+    
 }
