@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 /**
  * Write a description of class TiendaPeliculas here.
  *
@@ -47,6 +48,20 @@ public class TiendaPeliculas
     /**
      * Metodo para obtener las peliculas ordenadas por el year
      */
+    
+    public void orderYear()
+    {
+        ArrayList<Peliculas> copiaColeccion = listaDePeliculas;
+        for (int i = 0; i < copiaColeccion.size(); i=0)
+        {
+            int primerYear = copiaColeccion.get(i).getYear();
+            for (int j = 0; j < copiaColeccion.size(); j++)
+            {
+                int yearActual = copiaColeccion.get(i).getYear();
+                
+            }
+        }
+    }
 
     /**
      * Metodo para cambiar una de las caracteristicas del objeto mediante el numero 
@@ -76,5 +91,38 @@ public class TiendaPeliculas
         }
     }
     
+    /**
+     * Metodo que permite eliminar los objetos cuyo year sea igual
+     * al que le pasamos por pantalla mediante un iterador
+     */
+    public void removeYear(int year)
+    {
+        Iterator<Peliculas> iterator = listaDePeliculas.iterator();
+        while (iterator.hasNext())
+        {
+            Peliculas peliActual = iterator.next();
+            if(peliActual.getYear() == year)
+            {
+                iterator.remove();
+            }
+        }   
+    }
+    
+    /**
+     * Metodo que permite eliminar los objetos cuyo director sea el mismo
+     * al que le pasamos por pantalla mediante un iterador
+     */
+    public void removeDirector(String director)
+    {
+        Iterator<Peliculas> iterator = listaDePeliculas.iterator();
+        while (iterator.hasNext())
+        {
+            Peliculas peliActual = iterator.next();
+            if(peliActual.getDirector().toLowerCase().equals(director.toLowerCase()))
+            {
+                iterator.remove();
+            }
+        }   
+    }
 }
 
