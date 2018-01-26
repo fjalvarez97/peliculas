@@ -9,6 +9,7 @@ import java.util.Iterator;
  */
 public class TiendaPeliculas
 {
+
     //Una coleccion de peliculas
     private ArrayList<Peliculas> listaDePeliculas;
     /**
@@ -18,8 +19,7 @@ public class TiendaPeliculas
     {
         listaDePeliculas = new ArrayList<>();   
     }
-    
-    
+
     /**
      * Metodo para agregar peliculas a la coleccion
      */
@@ -27,10 +27,13 @@ public class TiendaPeliculas
     {
         int identificador = listaDePeliculas.size();
         // El propio metodo le indica un identificador
-        Peliculas nuevaPelicula = new Peliculas(year,title,director,gender,identificador);
-        listaDePeliculas.add(nuevaPelicula);
+        if (year > 0)
+        {
+            Peliculas nuevaPelicula = new Peliculas(year,title,director,gender,identificador);
+            listaDePeliculas.add(nuevaPelicula);
+        }
     }
-    
+
     /**
      * Metodo para obtener todas las informaciones de las peliculas 
      * que haya en la lista
@@ -44,30 +47,59 @@ public class TiendaPeliculas
             index++;
         }
     }
+
+    /**
+     * Metodo para obtener las peliculas ordenadas por el year de mayor a menor
+     */
+    public void orderYear() 
+    {
+        ArrayList<Peliculas> copiaColeccion = (ArrayList<Peliculas>) listaDePeliculas.clone();
+        for(int i = 0; i < copiaColeccion.size(); i = 0) 
+        {
+            Peliculas primerElemento = copiaColeccion.get(i);
+            for(int j = 0; j < copiaColeccion.size(); j++) 
+            {
+                Peliculas elementoActual = copiaColeccion.get(j);
+                if (elementoActual.getYear() > primerElemento.getYear()) 
+                {
+                    primerElemento = elementoActual;
+                }
+            }
+            copiaColeccion.remove(primerElemento);
+            System.out.println(primerElemento.getInfo());
+        }
+
+    }
     
     /**
-     * Metodo para obtener las peliculas ordenadas por el year
+     * Metodo para obtener las peliculas ordenadas alfabeticamente
+     * por el nombre del director
      */
-    
-    public void orderYear()
+    public void orderDirector() 
     {
-        ArrayList<Peliculas> copiaColeccion = listaDePeliculas;
-        for (int i = 0; i < copiaColeccion.size(); i=0)
+        ArrayList<Peliculas> copiaColeccion = (ArrayList<Peliculas>) listaDePeliculas.clone();
+        for(int i = 0; i < copiaColeccion.size(); i = 0) 
         {
-            int primerYear = copiaColeccion.get(i).getYear();
-            for (int j = 0; j < copiaColeccion.size(); j++)
+            Peliculas primerElemento = copiaColeccion.get(i);
+            for(int j = 0; j < copiaColeccion.size(); j++) 
             {
-                int yearActual = copiaColeccion.get(i).getYear();
-                
+                Peliculas elementoActual = copiaColeccion.get(j);
+                if (elementoActual.getDirector().compareTo(primerElemento.getDirector())<=0) 
+                {
+                    primerElemento = elementoActual;
+                }
             }
+            copiaColeccion.remove(primerElemento);
+            System.out.println(primerElemento.getInfo());
         }
+
     }
 
     /**
      * Metodo para cambiar una de las caracteristicas del objeto mediante el numero 
      * identificativo (En este caso cambia el year de publicacion de la pelicula.
      */
-    
+
     public void changeYear(int identificator,int year)
     {
         if (listaDePeliculas.size()>0)
@@ -78,7 +110,7 @@ public class TiendaPeliculas
             listaDePeliculas.get(identificator).setYear(year);
         }
     }
-    
+
     /**
      * Metodo para cambiar una de las caracteristicas del objeto mediante el numero 
      * identificativo (En este caso cambia el director de la pelicula.
@@ -90,7 +122,7 @@ public class TiendaPeliculas
             listaDePeliculas.get(identificator).setDirector(director);
         }
     }
-    
+
     /**
      * Metodo que permite eliminar los objetos cuyo year sea igual
      * al que le pasamos por pantalla mediante un iterador
@@ -107,7 +139,7 @@ public class TiendaPeliculas
             }
         }   
     }
-    
+
     /**
      * Metodo que permite eliminar los objetos cuyo director sea el mismo
      * al que le pasamos por pantalla mediante un iterador
