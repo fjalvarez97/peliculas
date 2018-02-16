@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 /**
  * Write a description of class TiendaPeliculas here.
  *
@@ -9,15 +12,31 @@ import java.util.Iterator;
  */
 public class TiendaPeliculas
 {
-
     //Una coleccion de peliculas
     private ArrayList<Peliculas> listaDePeliculas;
+    
     /**
      * Constructor for objects of class TiendaPeliculas
      */
-    public TiendaPeliculas()
+    public TiendaPeliculas(String  nombreArchivo)
     {
-        listaDePeliculas = new ArrayList<>();   
+        listaDePeliculas = new ArrayList<>(); 
+        try 
+        {
+            File archivo = new File(nombreArchivo);
+            Scanner sc = new Scanner(archivo);
+            while (sc.hasNextLine()) 
+            {
+                String a = sc.nextLine();
+                String[] partes = (a.split(" # "));
+                addPelicula(Integer.parseInt(partes[0]),partes[1],partes[2],partes[3]);
+            }
+            sc.close();
+        }
+        catch (FileNotFoundException e) 
+        {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -70,7 +89,7 @@ public class TiendaPeliculas
         }
 
     }
-    
+
     /**
      * Metodo para obtener las peliculas ordenadas alfabeticamente
      * por el nombre del director
