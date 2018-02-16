@@ -1,0 +1,11 @@
+2017 # La Forma Del Agua # Guillermo del toro # Fantasia
+2018 # La Cura Mortal # Wes Ball # Accion
+2001 # La Comunidad Del Anillo # Peter Jackson # Fantasia
+2010 # Matrix # LanaWachowski # Ficcion
+1977 # StarWars # George Lucas # Accion
+2010 # To Kill a Lion # Bruce Lee # Fantasia
+2004 # Diario Noah # Nick Cassavetes # Ficcion
+2011 # Verbo # Eduardo Chapero # Fantasia
+2011 # The Mechanic # Simon West # Accion
+2002 # Ali G # Mark Mylod # Accion
+2001 # Bling Bling # James Bobin # Fantasia
