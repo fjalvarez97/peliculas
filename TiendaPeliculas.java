@@ -13,8 +13,8 @@ import java.io.FileNotFoundException;
 public class TiendaPeliculas
 {
     //Una coleccion de peliculas
-    private ArrayList<Peliculas> listaDePeliculas;
-    
+    private ArrayList<Pelicula> listaDePeliculas;
+
     /**
      * Constructor for objects of class TiendaPeliculas
      */
@@ -48,7 +48,7 @@ public class TiendaPeliculas
         // El propio metodo le indica un identificador
         if (year > 0)
         {
-            Peliculas nuevaPelicula = new Peliculas(year,title,director,gender,identificador);
+            Pelicula nuevaPelicula = new Pelicula(year,title,director,gender,identificador);
             listaDePeliculas.add(nuevaPelicula);
         }
     }
@@ -62,7 +62,7 @@ public class TiendaPeliculas
         int index = 0;
         while(listaDePeliculas.size() > index)
         {
-            System.out.println(listaDePeliculas.get(index).getInfo());
+            System.out.println(listaDePeliculas.get(index));
             index++;
         }
     }
@@ -72,20 +72,20 @@ public class TiendaPeliculas
      */
     public void orderYear() 
     {
-        ArrayList<Peliculas> copiaColeccion = (ArrayList<Peliculas>) listaDePeliculas.clone();
+        ArrayList<Pelicula> copiaColeccion = (ArrayList<Pelicula>) listaDePeliculas.clone();
         for(int i = 0; i < copiaColeccion.size(); i = 0) 
         {
-            Peliculas primerElemento = copiaColeccion.get(i);
+            Pelicula primerElemento = copiaColeccion.get(i);
             for(int j = 0; j < copiaColeccion.size(); j++) 
             {
-                Peliculas elementoActual = copiaColeccion.get(j);
+                Pelicula elementoActual = copiaColeccion.get(j);
                 if (elementoActual.getYear() > primerElemento.getYear()) 
                 {
                     primerElemento = elementoActual;
                 }
             }
             copiaColeccion.remove(primerElemento);
-            System.out.println(primerElemento.getInfo());
+            System.out.println(primerElemento);
         }
 
     }
@@ -96,20 +96,20 @@ public class TiendaPeliculas
      */
     public void orderDirector() 
     {
-        ArrayList<Peliculas> copiaColeccion = (ArrayList<Peliculas>) listaDePeliculas.clone();
+        ArrayList<Pelicula> copiaColeccion = (ArrayList<Pelicula>) listaDePeliculas.clone();
         for(int i = 0; i < copiaColeccion.size(); i = 0) 
         {
-            Peliculas primerElemento = copiaColeccion.get(i);
+            Pelicula primerElemento = copiaColeccion.get(i);
             for(int j = 0; j < copiaColeccion.size(); j++) 
             {
-                Peliculas elementoActual = copiaColeccion.get(j);
+                Pelicula elementoActual = copiaColeccion.get(j);
                 if (elementoActual.getDirector().compareTo(primerElemento.getDirector())<=0) 
                 {
                     primerElemento = elementoActual;
                 }
             }
             copiaColeccion.remove(primerElemento);
-            System.out.println(primerElemento.getInfo());
+            System.out.println(primerElemento);
         }
 
     }
@@ -148,10 +148,10 @@ public class TiendaPeliculas
      */
     public void removeYear(int year)
     {
-        Iterator<Peliculas> iterator = listaDePeliculas.iterator();
+        Iterator<Pelicula> iterator = listaDePeliculas.iterator();
         while (iterator.hasNext())
         {
-            Peliculas peliActual = iterator.next();
+            Pelicula peliActual = iterator.next();
             if(peliActual.getYear() == year)
             {
                 iterator.remove();
@@ -165,15 +165,42 @@ public class TiendaPeliculas
      */
     public void removeDirector(String director)
     {
-        Iterator<Peliculas> iterator = listaDePeliculas.iterator();
+        Iterator<Pelicula> iterator = listaDePeliculas.iterator();
         while (iterator.hasNext())
         {
-            Peliculas peliActual = iterator.next();
+            Pelicula peliActual = iterator.next();
             if(peliActual.getDirector().toLowerCase().equals(director.toLowerCase()))
             {
                 iterator.remove();
             }
         }   
+    }
+
+    /**
+     * Muestra los objetos de la coleccion divididos por su genero.
+     */
+
+    public void showByGender()
+    {
+        ArrayList<String> generosObtenidos = new ArrayList<>();
+        for(int i = 0; i < listaDePeliculas.size(); i++) 
+        {
+            String primerGenero = listaDePeliculas.get(i).getGender();
+            if(!generosObtenidos.contains(primerGenero))
+            {
+                System.out.println(primerGenero + ":");
+                for(int j = 0; j < listaDePeliculas.size(); j++) 
+                {
+                    generosObtenidos.add(primerGenero);
+                    String generoActual = listaDePeliculas.get(j).getGender();
+                    if (generoActual.equals(primerGenero)) 
+                    {
+                        System.out.println(listaDePeliculas.get(j));
+                    }
+                }
+            }
+            System.out.println();
+        }
     }
 }
 
