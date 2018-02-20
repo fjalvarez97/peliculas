@@ -185,21 +185,50 @@ public class TiendaPeliculas
         ArrayList<String> generosObtenidos = new ArrayList<>();
         for(int i = 0; i < listaDePeliculas.size(); i++) 
         {
-            String primerGenero = listaDePeliculas.get(i).getGender();
-            if(!generosObtenidos.contains(primerGenero))
+            Pelicula primeraPelicula = listaDePeliculas.get(i);
+            ArrayList <Pelicula> pelisPorGenero = new ArrayList<>();
+            if(!generosObtenidos.contains(primeraPelicula.getGender()))
             {
-                System.out.println(primerGenero + ":");
+                System.out.println(primeraPelicula.getGender() + ":");
                 for(int j = 0; j < listaDePeliculas.size(); j++) 
                 {
-                    generosObtenidos.add(primerGenero);
-                    String generoActual = listaDePeliculas.get(j).getGender();
-                    if (generoActual.equals(primerGenero)) 
+                    generosObtenidos.add(primeraPelicula.getGender());
+                    Pelicula peliActual = listaDePeliculas.get(j);
+                    if (peliActual.getGender().equals(primeraPelicula.getGender())) 
                     {
-                        System.out.println(listaDePeliculas.get(j));
+                        pelisPorGenero.add(peliActual);
                     }
+                }
+                for(int j = 0; j < pelisPorGenero.size(); j=0) 
+                {
+                    Pelicula primeraPeliAlfabet = pelisPorGenero.get(0);
+                    for(int k = 0; k < pelisPorGenero.size(); k++) 
+                    {
+                        Pelicula peliAOrdenar = pelisPorGenero.get(k);
+                        if (peliAOrdenar.getTitle().compareToIgnoreCase(primeraPeliAlfabet.getTitle())<=0)
+                        { 
+                            primeraPeliAlfabet = peliAOrdenar;
+                        }  
+                    }
+                    System.out.println(primeraPeliAlfabet);
+                    pelisPorGenero.remove(primeraPeliAlfabet);
                 }
             }
             System.out.println();
+        }
+    }
+
+    /**
+     * Ordena un ArrayList de peliculas por su titulo alfabeticamente
+     */
+    public void orderByTitle()
+    {
+        for(int i = 0; i < listaDePeliculas.size(); i++) 
+        {
+
+            for(int j = 0; j < listaDePeliculas.size(); j++) 
+            {
+            }
         }
     }
 }
