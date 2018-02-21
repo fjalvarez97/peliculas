@@ -14,13 +14,23 @@ public class TiendaPeliculas
 {
     //Una coleccion de peliculas
     private ArrayList<Pelicula> listaDePeliculas;
+    //Identificador de la pelicula
+    private int idActual;
+    /**
+     * Constructor
+     */
+    public TiendaPeliculas()
+    {
+        idActual = 0; 
+        listaDePeliculas = new ArrayList<Pelicula>();
+    }
 
     /**
      * Constructor for objects of class TiendaPeliculas
      */
     public TiendaPeliculas(String  nombreArchivo)
     {
-        listaDePeliculas = new ArrayList<>(); 
+        this();
         try 
         {
             File archivo = new File(nombreArchivo);
@@ -44,12 +54,12 @@ public class TiendaPeliculas
      */
     public void addPelicula(int year, String title, String director,String gender)
     {
-        int identificador = listaDePeliculas.size();
         // El propio metodo le indica un identificador
         if (year > 0)
         {
-            Pelicula nuevaPelicula = new Pelicula(year,title,director,gender,identificador);
+            Pelicula nuevaPelicula = new Pelicula(year,title,director,gender,idActual);
             listaDePeliculas.add(nuevaPelicula);
+            idActual++;
         }
     }
 
@@ -215,20 +225,6 @@ public class TiendaPeliculas
                 }
             }
             System.out.println();
-        }
-    }
-
-    /**
-     * Ordena un ArrayList de peliculas por su titulo alfabeticamente
-     */
-    public void orderByTitle()
-    {
-        for(int i = 0; i < listaDePeliculas.size(); i++) 
-        {
-
-            for(int j = 0; j < listaDePeliculas.size(); j++) 
-            {
-            }
         }
     }
 }
